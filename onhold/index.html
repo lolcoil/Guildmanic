@@ -1,0 +1,11 @@
+ <canvas id="display" width="200" height="200" style="border:1px solid #000000;">
+</canvas> 
+<script type="text/javascript">
+	window.onload = function () {
+		console.log("js loaded");
+		var c = document.getElementById("display");
+		var ctx = c.getContext("2d");
+		ctx.fillStyle = "#FF0000";
+		ctx.fillRect(0,0,150,75);
+	}
+</script>
