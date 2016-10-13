@@ -1,2 +1,2 @@
-node "%~dp0server\main.js"
+@node "%~dp0server\main.js"
 pause

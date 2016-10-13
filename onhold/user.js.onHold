@@ -1,0 +1,20 @@
+module.exports = {
+	list : {},
+		
+		
+	user : function (s) {
+		list.push(this);
+		this.socket = s;
+		this.auth_key = false;
+		this.isAdmin = false;
+		this.username = '';
+		this.email = '';
+		this.password = '';
+		this.refferal = '';
+		
+		
+		this.drop = function () {
+			list.splice(list.indexOf(this),1);
+		};
+	}
+}

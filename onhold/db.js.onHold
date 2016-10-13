@@ -1,0 +1,40 @@
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'GuildManic'
+});
+
+connection.connect(function(err) {
+  if (err) {
+    console.error('Error cannot connect to SQL host: ' + err.stack);
+    return;
+  }
+  console.log('Connetion to SQL host established');
+});
+
+module.exports = {
+	qr : function (q) {
+		connection.query(q, function(err, rows) {
+			if (err) {
+				return false;
+				//console.log(false);
+			}
+			else{
+				return rows;
+				//console.log( rows);
+			}
+		});
+	},
+	esc : mysql.escape,
+	user : function () {
+		this.public_prop = 'im public prop';
+		var private_prop = 'im private prop';
+		this.get = function (){
+			return private_prop;
+		}
+	}
+}
+
+

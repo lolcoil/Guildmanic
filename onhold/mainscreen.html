@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<title>GuildManic a0.1</title>
+		<style>
+			#authentication_forms .nav {
+				text-align: center;
+			}
+			#authentication_forms .nav li {
+				float: none;
+				display: inline-block;
+			}
+			#authentication_forms  form > .row {
+				text-align: center;
+			}
+			
+			
+			#resource_box {
+				min-width:325px;
+			}			
+			#social_box {
+				min-width:325px;
+			}
+			
+			
+
+		</style>
+	</head>
+	<body>
+
+	
+	
+	
+	
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand">GuildManic a0.1</a>
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_nav">
+							<span class="glyphicon glyphicon-triangle-bottom"></span>
+						</button>
+					</div>
+					<div id="main_nav" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="active">
+								<a href="">Status</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Members<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="">Overview</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Hunters</a></li>
+									<li><a href="#">Crafters</a></li>
+									<li><a href="#">Builders</a></li>
+									<li><a href="#">Gatherers</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="">something else</a>
+							</li>
+							<li>
+								<a href="">something else</a>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="">Social</a></li>
+							<li><a href="">Profil</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		</br>
+		</br>
+		</br>
+		</br>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-5 col-sm-push-7">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12">
+								<div id="resource_box">
+									<div class="well">resource_box resource_box resource_box resource_box resource_box resource_box resource_box resource_box resource_box resource_box resource_box </div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div id="social_box">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<div class="navbar navbar-default">
+												<div class="navbar-inner">
+													<div class="container-fluid">
+														<div class="navbar-header">
+															<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#social_box_nav">
+																<span class="glyphicon glyphicon-triangle-bottom"></span>
+															</button>
+														</div>
+														<div id="social_box_nav" class="navbar-collapse collapse">
+															<ul class="nav navbar-nav">
+																<li class="active">
+																	<a href="">All</a>
+																</li>
+																<li>
+																	<a href="">Friends</a>
+																</li>
+																<li>
+																	<a href="">Empire</a>
+																</li>
+															</ul>
+															<ul class="nav navbar-nav navbar-right">
+																<li><a href=""><span class=" glyphicon glyphicon-menu-up"></span></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel-body" >
+											<div id="social_box_all" style="display:initial">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<div class="btn-group" role="group">
+															<button type="button" class="btn btn-default">/ A</button>
+															<button type="button" class="btn btn-default">/ E</button>
+															<button type="button" class="btn btn-default">/ T</button>
+															<button type="button" class="btn btn-default">/ W</button>
+														</div>
+													</div>
+													<div class="panel-body pre-scrollable" >
+														<p>dsfjsoagsdjf dsfas</p>
+														<p>dsfjsoagsdjf dsfas</p>
+														<p>dsfjsoagsdjf dsfas</p>
+														<p>dsfjsoagsdjf dsfas</p>
+													</div>
+													<div class="panel-heading">
+														<div class="input-group">
+															<div class="input-group-btn">												
+																<div class="dropup">
+																	<button class="btn btn-default dropdown-toggle" type="button" id="channel_selector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																		A
+																		<span class="caret"></span>
+																	</button>
+																	<ul class="dropdown-menu" aria-labelledby="channel_selector">
+																		<li><a>All</a></li>
+																		<li><a>Trade</a></li>
+																		<li><a>Empire</a></li>
+																		<li><a>Whisper</a></li>
+																		<li><a>Replay</a></li>
+																	</ul>
+																</div>
+															</div>
+															<input type="text" class="form-control" placeholder="">
+															<span class="input-group-btn">
+																<button class="btn btn-default" type="button">
+																	Send
+																</button>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div id="social_box_friends" style="display:initial">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<div class="input-group">
+															<span class="input-group-btn">
+																<button class="btn btn-default" type="button">
+																	<span class=" glyphicon glyphicon-menu-up"></span>
+																</button>
+																<button class="btn btn-default" type="button">
+																	<span class="glyphicon glyphicon-plus"></span>
+																</button>
+															</span>
+															<input type="text" class="form-control" placeholder="Add a friend">
+															<span class="input-group-addon">
+																<span class="glyphicon glyphicon-remove"></span>
+															</span>
+														</div>
+													</div>
+													<div class="panel-body pre-scrollable">
+														<table class="table table-hover">
+															<tbody>
+																<tr>
+																	<td>Mark</td>
+																	<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																</tr>
+																<tr>
+																	<td>Mark</td>
+																	<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																</tr>
+																<tr>
+																	<td>Mark</td>
+																	<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+													<div class="panel-heading">
+													</div>
+													<div class="panel-body pre-scrollable">
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+													</div>
+													<div class="panel-heading">
+														<div class="input-group">
+															<input type="text" class="form-control" placeholder="">
+															<span class="input-group-btn">
+															<button class="btn btn-default" type="button">
+															Send
+															</button>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div id="social_box_empire" style="display:initial">
+												<div class="panel panel-default">
+													<div class="panel-body pre-scrollable">
+														<table class="table table-hover">
+															<tbody>
+																<tr>
+																	<td>Mark</td>
+																	<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																</tr>
+																<tr>
+																	<td>Mark</td>
+																	<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																</tr>
+																<tr>
+																	<td>Mark</td>
+																	<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+													<div class="panel-heading">
+													</div>
+													<div class="panel-body pre-scrollable">
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+														<p>asfdfsdaf</p>
+													</div>
+													<div class="panel-heading">
+														<div class="input-group">
+															<span class="input-group-btn">
+																<button class="btn btn-default" type="button">
+																All
+																</button>
+															</span>
+															<input type="text" class="form-control" placeholder="">
+															<span class="input-group-btn">
+																<button class="btn btn-default" type="button">
+																Send
+																</button>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-7 col-sm-pull-5">
+					<div id="main_box">
+						<div class="content" id="members_view">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<p>test</p>
+									<p>test</p>
+									<p>test</p>
+									<p>test</p>
+									<p>test</p>
+									<p>test</p>
+								</div>
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>Name <span class="glyphicon glyphicon-sort-by-attributes"></span></th>
+											<th>Level <span class="glyphicon glyphicon-sort-by-attributes"></span></th>
+											<th>Type <span class="glyphicon glyphicon-sort-by-attributes"></span></th>
+											<th>Task Progression <span class="glyphicon glyphicon-sort-by-attributes"></span></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td scope="row">1</td>
+											<td>Mark</td>
+											<td>Otto</td>
+											<td>@mdo</td>
+										</tr>
+										<tr>
+											<td scope="row">2</td>
+											<td>Jacob</td>
+											<td>Thornton</td>
+											<td>@fat</td>
+										</tr>
+										<tr>
+											<td scope="row">3</td>
+											<td colspan="2">Larry the Bird</td>
+											<td>@twitter</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="content" id="other_view">
+							second view
+						</div>
+						<div class="content" id="onemore_view">
+							third view
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+	
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</body>
+</html>
+
