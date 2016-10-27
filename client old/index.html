@@ -20,41 +20,14 @@
 			
 			
 			#resource_box {
-				min-width:310px;
+				min-width:400px;
 			}			
 			#social_box {
-				min-width:310px;
+				min-width:400px;
 			}
 			
 			#social_box .pre-scrollable{
-				max-height:200px;
-			}
-			
-			.chat_msg{
-				margin-top:7px;
-				margin-bottom:7px;
-				margin-right:15px;
-			}
-			.chat_msg_sender, .chat_msg_time {
-				font-weight: bold;
-			}
-			.chat_msg_type_all{
-				background:#ffcc99;
-			}
-			.chat_msg_type_empire{
-				background:#66ff66;
-			}
-			.chat_msg_type_trade{
-				background:#66ccff;
-			}
-			.chat_msg_type_whisper{
-				background:#ff66ff;
-			}
-			.chat_msg_type_error{
-				background:#ff3300;
-			}
-			.chat_msg_sender[tar] {
-				cursor: pointer;
+				max-height:150px;
 			}
 
 		</style>
@@ -77,6 +50,10 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
 		<div id="authentication_forms" class="view" style="display:none">
 			</br>
 			<div class="container">
@@ -211,6 +188,11 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
+
 		<div id="main_screen" class="view" style="display:none">
 			<div class="navbar navbar-default navbar-fixed-top">
 				<div class="navbar-inner">
@@ -229,9 +211,9 @@
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Members<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="javascript:void(0)" tar="#content_members_overview"  group=".content">Overview</a></li>
+										<li><a href="javascript:void(0)" tar="content_members_overview">Overview</a></li>
 										<li role="separator" class="divider"></li>
-										<li><a href="javascript:void(0)" tar="#content_members_hire" group=".content">Hire</a></li>
+										<li><a href="javascript:void(0)" tar="content_members_hire">Hire</a></li>
 									</ul>
 								</li>
 								<li>
@@ -271,13 +253,13 @@
 															<div id="social_box_nav">
 																<ul class="nav navbar-nav">
 																	<li class="active">
-																		<a href="javascript:void(0)" tar="#social_box_chat" group=".social_box_tab">Chat</a>
+																		<a href="javascript:void(0)" tar="#social_box_all">All <span class="badge">4</span></a>
 																	</li>
 																	<li>
-																		<a href="javascript:void(0);" tar="#social_box_friends" group=".social_box_tab">Friends</a>
+																		<a href="javascript:void(0);" tar="#social_box_friends">Friends <span class="badge">4</span></a>
 																	</li>
 																	<li>
-																		<a href="javascript:void(0);" tar="#social_box_empire" group=".social_box_tab">Empire</a>
+																		<a href="javascript:void(0);" tar="#social_box_empire">Empire <span class="badge">4</span></a>
 																	</li>
 																</ul>
 																<ul class="nav navbar-nav navbar-right">
@@ -289,94 +271,182 @@
 												</div>
 											</div>
 											<div class="panel-body">
-												<div id="social_box_chat" class="social_box_tab">
-													<div class="well">
-														<div class="btn-group" role="group" id="chat_msg_filter">
-															<button type="button" class="btn btn-default active">@ A</button>
-															<button type="button" class="btn btn-default active">@ E</button>
-															<button type="button" class="btn btn-default active">@ T</button>
-															<button type="button" class="btn btn-default active">@ W</button>
-															<button type="button" class="btn btn-default active">Err</button>
-														</div>
-													</div>
-													<div class="pre-scrollable" id="social_box_chat_output">
-														<div class="well well-sm chat_msg" id="chat_msg_template" style="display:none">
-															<span class="chat_msg_time"></span>
-															<span class="chat_msg_sender"></span>
-															<span class="chat_msg_content"></span>
-														</div>
-													</div>
-													<div class="well">
-														<div class="input-group">
-															<div class="input-group-btn">												
-																<div class="dropup">
-																	<button class="btn btn-default dropdown-toggle" type="button" id="channel_selector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																		@A <span class="caret"></span>
-																	</button>
-																	<ul class="dropdown-menu" aria-labelledby="channel_selector">
-																		<li><a>@All</a></li>
-																		<li><a>@Trade</a></li>
-																		<li><a>@Empire</a></li>
-																		<li><a>@Replay</a></li>
-																		<li><a>@Whisper</a></li>
-																	</ul>
-																</div>
+												<div id="social_box_all" class="social_box_tab">
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<div class="btn-group" role="group">
+																<button type="button" class="btn btn-default active">@ A</button>
+																<button type="button" class="btn btn-default active">@ E</button>
+																<button type="button" class="btn btn-default active">@ T</button>
+																<button type="button" class="btn btn-default active">@ W</button>
 															</div>
-															<input type="text" class="form-control sendChatMsg" placeholder="" id="input_chat_msg"  maxlength="200">
-															<span class="input-group-btn">
-																<button class="btn btn-default sendChatMsg" type="button">
-																	Send
-																</button>
-															</span>
+														</div>
+														<div class="panel-body pre-scrollable" >
+															<p>dsfjsoagsdjf dsfas</p>
+															<p>dsfjsoagsdjf dsfas</p>
+															<p>dsfjsoagsdjf dsfas</p>
+															<p>dsfjsoagsdjf dsfas</p>
+														</div>
+														<div class="panel-heading">
+															<div class="input-group">
+																<div class="input-group-btn">												
+																	<div class="dropup">
+																		<button class="btn btn-default dropdown-toggle channelSelector" type="button" id="channel_selector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																			@A <span class="caret"></span>
+																		</button>
+																		<ul class="dropdown-menu" aria-labelledby="channel_selector">
+																			<li><a>@All</a></li>
+																			<li><a>@Trade</a></li>
+																			<li><a>@Empire</a></li>
+																			<li><a>@Replay</a></li>
+																		</ul>
+																	</div>
+																</div>
+																<input type="text" class="form-control sendChatMsg" placeholder="">
+																<span class="input-group-btn">
+																	<button class="btn btn-default sendChatMsg" type="button">
+																		Send
+																	</button>
+																</span>
+															</div>
 														</div>
 													</div>
 												</div>
 												<div id="social_box_friends" class="social_box_tab" style="display:none">
-													<div class="well">
-														<div class="input-group">
-															<span class="input-group-btn">>
-																<button class="btn btn-default" type="button">
-																	<span class="glyphicon glyphicon-plus"></span>
-																</button>
-															</span>
-															<input type="text" class="form-control" placeholder="Add a friend">
-															<span class="input-group-addon">
-																<span class="glyphicon glyphicon-remove"></span>
-															</span>
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<div class="input-group">
+																<span class="input-group-btn">
+																	<button class="btn btn-default" type="button" collapse="#social_box_friends [class=panel-body]">
+																		<span class="glyphicon glyphicon-menu-up"></span>
+																	</button>
+																	<button class="btn btn-default" type="button">
+																		<span class="glyphicon glyphicon-plus"></span>
+																	</button>
+																</span>
+																<input type="text" class="form-control" placeholder="Add a friend">
+																<span class="input-group-addon">
+																	<span class="glyphicon glyphicon-remove"></span>
+																</span>
+															</div>
 														</div>
-													</div>
-													<div class="pre-scrollable">
-														<table class="table table-hover">
-															<tbody>
-																<tr>
-																	<td>Mark</td>
-																	<td>
-																		<span class="glyphicon glyphicon-envelope pull-right"></span>
-																		<span class="glyphicon glyphicon-remove pull-right"></span>
-																	</td>
-																</tr>
-															</tbody>
-														</table>
+														<div class="panel-body">
+															<div class="pre-scrollable">
+																<table class="table table-hover">
+																	<tbody>
+																		<tr>
+																			<td>Mark</td>
+																			<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																		</tr>
+																		<tr>
+																			<td>Mark</td>
+																			<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																		</tr>
+																		<tr>
+																			<td>Mark</td>
+																			<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+														<div class="panel-heading">
+														</div>
+														<div class="panel-body pre-scrollable">
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+														</div>
+														<div class="panel-heading">
+															<div class="input-group">
+																<span class="input-group-btn">
+																	<button class="btn btn-default channelSelector" type="button">
+																	All
+																	</button>
+																</span>
+																<input type="text" class="form-control sendChatMsg" placeholder="">
+																<span class="input-group-btn">
+																	<button class="btn btn-default sendChatMsg" type="button">
+																	Send
+																	</button>
+																</span>
+															</div>
+														</div>
 													</div>
 												</div>
 												<div id="social_box_empire" class="social_box_tab" style="display:none">
-													<div class="pre-scrollable">
-														<table class="table table-hover">
-															<tbody>
-																<tr>
-																	<td>gfdd</td>
-																	<td><span class="glyphicon glyphicon-envelope pull-right"></span></td>
-																</tr>
-																<tr>
-																	<td>Mdfgdffark</td>
-																	<td><span class="glyphicon glyphicon-envelope pull-right"></span></td>
-																</tr>
-																<tr>
-																	<td>sdfgdffff</td>
-																	<td><span class="glyphicon glyphicon-envelope pull-right"></span></td>
-																</tr>
-															</tbody>
-														</table>
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<div class="input-group">
+																<button class="btn btn-default" type="button" collapse="#social_box_empire [class=panel-body]">
+																	<span class="glyphicon glyphicon-menu-up"></span>
+																</button>
+															</div>
+														</div>
+														<div class="panel-body">
+															<div class="pre-scrollable">
+																<table class="table table-hover">
+																	<tbody>
+																		<tr>
+																			<td>Mark</td>
+																			<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																		</tr>
+																		<tr>
+																			<td>Mark</td>
+																			<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																		</tr>
+																		<tr>
+																			<td>Mark</td>
+																			<td><span class="glyphicon glyphicon-remove pull-right"></span></td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+														<div class="panel-heading">
+														</div>
+														<div class="panel-body pre-scrollable">
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+															<p>asfdfsdaf</p>
+														</div>
+														<div class="panel-heading">
+															<div class="input-group">
+																<span class="input-group-btn">
+																	<button class="btn btn-default channelSelector" type="button">
+																	All
+																	</button>
+																</span>
+																<input type="text" class="form-control sendChatMsg" placeholder="">
+																<span class="input-group-btn">
+																	<button class="btn btn-default sendChatMsg" type="button">
+																	Send
+																	</button>
+																</span>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>

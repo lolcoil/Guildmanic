@@ -1,7 +1,8 @@
 //--- Global Variables
 
 
-var user = {}
+var auth_token = false;
+var username;
 
 	
 //--- Function Definitions
@@ -10,7 +11,14 @@ var user = {}
 
 //--- Eventhandlers
 
-
+var onErrorResponse = function (data){
+	// fatal/critical error
+	if (data == 0){console.log('Recived fatal/critical ERROR!');}
+	// invalid request
+	if (data == 1){console.log('Client sent a invalid Request');}
+	// not loged in
+	if (data == 2){console.log('Access denied');}
+}
 
 
 //--- Eventhandler mapping
@@ -28,22 +36,16 @@ var mapEventHandlers = function () {
 	
 	// UI events
 	$('#msgBox').on('hidden.bs.modal',UI.MsgBox.onMsgBoxClose);
-	$('#main_nav [tar],#social_box_nav [tar]').click(UI.onClickNavbarIcon);
+	$('#social_box_nav a[tar]').click(UI.onClickSocialBoxNavbar);
+	$('#main_nav [tar]').click(UI.onClickMainNavbar);
 	$('[collapse]').click(UI.onClickCollapseButton);
-	
-	
-	// Chat events
-	$('[aria-labelledby=channel_selector] a').click(Chat.onChannelSelect);	
 	$('.sendChatMsg').click(Chat.onSubmitChatMessage).keyup(Chat.onSubmitChatMessage);
-	$('#chat_msg_filter button').click(Chat.onToggleFilter);
-	$('.chat_msg_sender').click(Chat.onClickWhisperable);
-	
-
+	$('[aria-labelledby=channel_selector] a').click(UI.onChannelSelect);
 	
 	
 	// socket data
 	socket.on('auth',onAuthResponse);
-	socket.on('err',UI.onErrorResponse);
+	socket.on('err',onErrorResponse);
 	socket.on('chat',Chat.onChatResponse);
 }
 
@@ -52,21 +54,17 @@ $(document).ready(function() {
 	console.log('client.js init...');
 	
 	mapEventHandlers();
+	
+	
 	$(function () {$('[data-toggle="tooltip"]').tooltip()});
-	UI.setView('authentication_forms');
+	UI.setView('main_screen');
+	UI.setContent('content_members_overview');
 	$('#email_input').focus();
-	
-	
-	// cheat
-	//UI.setView('main_screen');
-	//$('#main_nav [tar]:first').click();
-	
 	
 	
 	// test stuff
 	//UI.MsgBox.create('j','jjjj',0,function(){alert()});
-	//console.log($('#social_box_chat_output').children().not('#chat_msg_template'));
-	
+	//console.log($('.sendChatMsg'));
 	//console.log(sha3_512('test'));
 	//console.log($('#registration_form input ~ span > span').not(':last'));
 	/*MsgBox.create('1','msg',0);

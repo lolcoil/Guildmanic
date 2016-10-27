@@ -4,9 +4,15 @@ var http	= require('http').Server(app);
 var io		= require('socket.io')(http);
 var hash	= require('js-sha3').sha3_512;
 var mysql	= require('mysql');
+
+const util = require('util');
+
 //var users	= require(__dirname + '\\class\\user.js');
 var log	= require(__dirname + '\\class\\log.js');
 log.debugMode = true;
+
+
+
 
 
 var db = mysql.createConnection({
@@ -33,10 +39,11 @@ db.connect(function(err) {
 
 
 io.on('connection', function (socket){
-	log.info('New client connected with id: ' + socket.id + ' IP: ' + socket.request.connection.remoteAddress);
+	log.info('New client connected with id: ' + socket.id + ' IP: ' + socket.request.connection.remoteAddress + ' Nr of active clients: ' + io.engine.clientsCount);
+	//console.log(util.inspect(io.sockets.connected));
 	socket.customData = {};
 	var cd = socket.customData;
-	cd.authToken = false;
+	cd.isLoggedIn = false;
 // authentication stuff
 	socket.on('auth', function (data) {
 		log.debug('client with id ' + socket.id + ' made a request:' + data);
@@ -64,8 +71,7 @@ io.on('connection', function (socket){
 							if(String(data[4]) == hash(rows[0].password.toString()+cd.login_hash+String(data[3]))){
 								var notInUse = true;
 								for (var socketId in io.sockets.sockets) {
-									if(io.sockets.sockets[socketId].customData.authToken){
-										log.debug(io.sockets.sockets[socketId].customData.email + ' == ' + data[2]);
+									if(io.sockets.sockets[socketId].customData.isLoggedIn){
 										if (io.sockets.sockets[socketId].customData.email == data[2]){
 											notInUse = false;
 											break;
@@ -76,8 +82,10 @@ io.on('connection', function (socket){
 									cd.email = data[2];
 									cd.username = rows[0].username;
 									cd.id = rows[0].id;
-									cd.authToken = hash(String(Math.random()));
-									socket.emit('auth',[0,1,cd.username,cd.authToken]);
+									cd.isLoggedIn = true;
+									cd.empireName = false;
+									cd.lastWhisperSender = false;
+									socket.emit('auth',[0,1,cd.username,cd.empireName]);
 									log.info('User "' + cd.username + '" has logged on');
 								}
 								else{ //user allready logged in
@@ -182,9 +190,98 @@ io.on('connection', function (socket){
 		socket.emit('err',1);
 	});
 	
+	socket.on('chat', function (data) {
+		log.debug(cd.username + ' sends msg ' + data);
+		if(!cd.isLoggedIn){
+			socket.emit('err',2);
+			return;
+		}
+		if(data.length > 200 || data.length < 1){
+			socket.emit('err',1);
+			return;
+		}
+		if(data.charAt(0) == '@'){
+			if(data.match(/^@[wert]\s/i)){
+				var ch = data.slice(1,2).toLowerCase();
+				var msg = data.slice(3);
+				if(ch == 'w'){
+					var recv = msg.match(/^[a-z]{4,20}\s/);
+					if(recv){
+						recv = recv[0].slice(0,recv[0].length-1);
+						msg = msg.slice(recv.length+1);
+						for(id in io.sockets.connected){
+							if(io.sockets.connected[id].customData.username == recv && id != socket.id){
+								io.sockets.connected[id].emit('chat',4,'From ' + cd.username,msg);
+								io.sockets.connected[id].customData.lastWhisperSender = socket.id;
+								socket.emit('chat',4,'You to ' + io.sockets.connected[id].customData.username,msg);
+								return;
+							}
+						}
+						socket.emit('chat',0,'Server','No user online who listens to the name ' + recv);
+						return;
+					}
+					else{
+						socket.emit('chat',0,'Server','You specified a invalid recivers name!');
+						return;
+					}
+				}
+				else{
+					if(ch == 'r'){
+						if(cd.lastWhisperSender){
+							io.sockets.connected[cd.lastWhisperSender].emit('chat',4,'From ' + cd.username,msg);
+							io.sockets.connected[cd.lastWhisperSender].customData.lastWhisperSender = socket.id;
+							socket.emit('chat',4,'You to ' + io.sockets.connected[cd.lastWhisperSender].customData.username,msg);
+						}
+						else{
+							socket.emit('chat',0,'Server','Nobody sent you a whisper yet.');
+						}
+						return
+					}
+					else{
+						if(ch == 'e'){
+							if(cd.empireName){
+								for(id in io.sockets.connected){
+									if(io.sockets.connected[id].customData.empireName == cd.empireName && id != socket.id){
+										io.sockets.connected[id].emit('chat',3,cd.username,msg);
+									}
+								}
+								socket.emit('chat',3,'You',msg);
+								return;
+							}
+							else{
+								socket.emit('chat',0,'Server','You are not a member of any empire');
+								return;
+							}
+						}
+						else{
+							if(ch == 't'){
+								for(id in io.sockets.connected){
+									if(io.sockets.connected[id].customData.isLoggedIn && id != socket.id){
+										io.sockets.connected[id].emit('chat',2,cd.username,msg);
+									}
+								}
+								socket.emit('chat',2,'You',msg);
+								return;
+							}
+						}
+					}	
+				}
+			}
+			socket.emit('chat',0,'Server','I could not figure out what you are trying to do.');
+		}
+		else{
+			for(id in io.sockets.connected){
+				if(io.sockets.connected[id].customData.isLoggedIn && id != socket.id){
+					io.sockets.connected[id].emit('chat',1,cd.username,data);
+				}
+			}
+			socket.emit('chat',1,'You',data);
+		}
+	});
+	
 // client disconnected
 	socket.on('disconnect', function (){
-		log.info('Client with ID ' + socket.id + ' is a goner');
+		log.info('Client with ID ' + socket.id + ' is a goner! Nr of active clients: ' + io.engine.clientsCount);
 	});
 });
 

@@ -9,6 +9,10 @@ var UI = {
 		$('#' + view).show();
 	},
 
+	setContent : function (content){
+		$('.content').hide();
+		$('#' + content).show();
+	},
 	
 	MsgBox : { 
 		queue : [],
@@ -55,27 +59,35 @@ var UI = {
 		
 		
 	//--- Eventhandlers
-		
-	onErrorResponse : function (data){
-		// fatal/critical error
-		if (data == 0){console.log('Recived fatal/critical ERROR!');}
-		// invalid request
-		if (data == 1){console.log('Client sent a invalid Request');}
-		// not loged in
-		if (data == 2){
-			UI.MsgBox.create('Access Denied','You are not authorized yet! Please log in first.',0,function(){
-				UI.setView('authentication_forms');
-				$('#email_input').focus();
-			});
-		}
+	
+	onClickMainNavbar : function (e) {
+		$('.content').hide();
+		$('#' + $(e.currentTarget).attr('tar')).show();
 	},
 	
-	onClickNavbarIcon : function (e) {
-		var b = $(e.currentTarget);
-		$(b.attr('group')).hide();
-		$(b.attr('tar')).show();
-		$('[group="' + b.attr('group') + '"]').parent().removeClass('active');
-		b.parent().addClass('active');
+	onClickSocialBoxNavbar : function (e) {
+		var tar = $($(e.currentTarget).attr('tar'));
+		var chSel = tar.find('.channelSelector');
+		$('#social_box_nav li').attr('class','');
+		$(e.currentTarget).parent().attr('class','active');
+		$('.social_box_tab').hide();
+		tar.show();
+		
+		if (tar.prop('id') == 'social_box_friends'){
+			Chat.msgPrefix = '@f ';
+			chSel.addClass('active');
+		}
+		else{
+			if (tar.prop('id') == 'social_box_empire'){
+				Chat.msgPrefix = '@e ';
+				chSel.addClass('active');
+			}
+			else{
+				Chat.msgPrefix = '@a ';
+				chSel.html('@A <span class="caret"></span>');
+			}
+		}
+		console.log(chSel.get(0));
 	},
 	
 	onClickCollapseButton : function (e) {
@@ -89,7 +101,13 @@ var UI = {
 		}
 	},
 	
+	onChannelSelect : function (e){
+		var ch = $(e.currentTarget).html().slice(0,2);
+		$('#channel_selector').html(ch + ' <span class="caret"></span>');
+		Chat.msgPrefix = ch.toLowerCase() + ' ';
+	},
 
+	
 	
 	
 	

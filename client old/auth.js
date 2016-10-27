@@ -30,9 +30,10 @@ var onAuthResponse = function (data){
 		}
 		else{
 			if(data[1] == 1){ //login succssesful
-				user.name = data[3];
+				username = data[3];
+				auth_token = data[4];
 				UI.setView('main_screen');
-				$('#main_nav [tar]:first').click();
+				UI.setContent('content_overview');
 			}
 			else{
 				if(data[1] == 2){//user allready online
